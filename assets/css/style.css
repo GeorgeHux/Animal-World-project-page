@@ -489,11 +489,16 @@ p {
   text-align: center;
   font-weight: 650;
   caption-side: top;
+  transform: translateY(-6px);
 }
 
-.benchmark-tables .results-table th:first-child,
-.benchmark-tables .results-table td:first-child {
+.benchmark-tables .results-table thead tr:first-child > th:first-child,
+.benchmark-tables .results-table tbody td:first-child {
   text-align: left;
+}
+
+.benchmark-tables .results-table tbody td:not(:first-child) {
+  text-align: center;
 }
 
 .results-table {
@@ -756,6 +761,7 @@ p {
   width: 100%;
   text-align: center;
   font-size: 13px;
+  font-weight: 650;
   line-height: 1.5;
   color: var(--text-tertiary);
 }
