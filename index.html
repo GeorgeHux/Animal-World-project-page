@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Animal World is a cross-species dataset and benchmark for social animal pose understanding in the wild, with 10K+ images, 124 species, and a unified 30-keypoint taxonomy."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Animal World: A Cross-Species Dataset for Social Animal Pose Understanding" />
+    <meta
+      property="og:description"
+      content="A scene-centric benchmark for cross-species social animal pose understanding with multi-animal interactions, cross-species co-occurrence, age diversity, and rare species."
+    />
+    <meta property="og:image" content="assets/images/dataset_overview_1.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Animal World Dataset" />
+    <meta
+      name="twitter:description"
+      content="Cross-species social animal pose understanding in natural scenes."
+    />
+    <meta name="twitter:image" content="assets/images/dataset_overview_1.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="assets/css/style.css?v=29" />
+
+    <title>Animal World: A Cross-Species Dataset for Social Animal Pose Understanding</title>
+  </head>
+  <body>
+    <div class="project-page">
+      <header class="site-nav">
+        <a class="site-mark" href="#top">Animal World</a>
+        <button class="mobile-nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="project-sections-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav id="project-sections-menu" aria-label="Project sections">
+          <a href="#gallery">Gallery</a>
+          <a href="#overview">Dataset</a>
+          <a href="#overview">Overview</a>
+          <a href="#keypoints">Keypoints</a>
+          <!-- <a href="#statistics">Statistics</a> -->
+          <a href="#benchmark">Benchmark</a>
+          <a href="#comparison">Comparison</a>
+          <a href="#citation">Citation</a>
+        </nav>
+      </header>
+
+      <section class="hero-section" id="top">
+        <div class="hero-content">
+          <h1>Animal World: A Cross-Species Dataset for Social Animal Pose Understanding</h1>
+          <p class="hero-subtitle">
+            Scene-centric, real-world animal imagery with rich ecological complexity — multi-animal interactions,
+            inter-species co-occurrence, age diversity, and rare species.
+          </p>
+
+          <div class="hero-authors">
+            <div class="hero-author-row">
+              <span>Xuyi Hu<sup>1*</sup></span>
+              <span>Jin Lyu<sup>2*</sup></span>
+              <span>Shaojie Zhang<sup>1</sup></span>
+              <span>Ke Ma<sup>1</sup></span>
+              <span>Houtianfu Wang<sup>1</sup></span>
+              <span>Siwei Liu<sup>1</sup></span>
+            </div>
+            <div class="hero-author-row">
+              <span>Jiuming Liu<sup>1</sup></span>
+              <span>Silvia Zuffi<sup>4</sup></span>
+              <span>Jiachen Zhao<sup>3</sup></span>
+              <span>Liang An<sup>3†</sup></span>
+              <span>Stefan Goetz<sup>1</sup></span>
+            </div>
+          </div>
+          <div class="hero-affiliations">
+            <span><sup>1</sup>University of Cambridge</span>
+            <span><sup>2</sup>Southern University of Science and Technology</span>
+            <span><sup>3</sup>Tsinghua University</span>
+            <span><sup>4</sup>IMATI-CNR, Milan, Italy</span>
+          </div>
+          <p class="hero-author-notes">
+            <span><sup>*</sup>Equal contribution</span>
+            <span><sup>†</sup>Corresponding author</span>
+          </p>
+
+          <div class="hero-actions">
+            <a class="hero-action primary" href="#" aria-label="Paper link placeholder">Paper</a>
+            <a class="hero-action" href="https://huggingface.co/datasets/GeorgeHux/Animal-World-Updated" target="_blank" rel="noopener noreferrer" aria-label="Animal World dataset on Hugging Face">Dataset</a>
+            <a class="hero-action" href="#" aria-label="Code link placeholder">Code</a>
+            <a class="hero-action" href="#citation">BibTeX</a>
+          </div>
+
+          <p class="hero-summary">
+            Animal pose understanding in the wild remains challenging due to large morphological variation,
+            frequent occlusion, and complex social interactions. Existing benchmarks are often limited to
+            particular species, sparse pose definitions, or isolated individuals. Animal World introduces a
+            unified 30-keypoint taxonomy and large-scale annotations spanning 124 species in natural environments,
+            enabling evaluation of pose estimation under socially complex, scene-centric conditions.
+          </p>
+
+          <div class="stats-strip" aria-label="Dataset statistics">
+            <div class="stat-card">
+              <strong>10,036</strong>
+              <span>Labelled images</span>
+            </div>
+            <div class="stat-card">
+              <strong>18,703</strong>
+              <span>Annotated instances</span>
+            </div>
+            <div class="stat-card">
+              <strong>124</strong>
+              <span>Species covered</span>
+            </div>
+            <div class="stat-card">
+              <strong>30</strong>
+              <span>Unified keypoints</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section gallery-section" id="gallery">
+        <div class="section-heading">
+          <h2>Animal World: A Large-Scale Cross-Species Social Pose Dataset over 10,000 Images and 124 Species</h2>
+          <p>
+            Browse annotated samples across 124 single-species categories, 94 cross-species combinations (shown with &amp;), and internet subsets. Each view shows up to 9 random samples — use Shuffle to see more.
+          </p>
+        </div>
+
+        <div class="gallery-explorer">
+          <div class="gallery-toolbar">
+            <label>
+              Species
+              <select id="gallery-species" aria-label="Filter by species">
+                <option value="all">All species</option>
+              </select>
+            </label>
+            <label>
+              Instances
+              <select id="gallery-instances" aria-label="Filter by instance count">
+                <option value="all">All counts</option>
+              </select>
+            </label>
+            <button id="gallery-shuffle" type="button">Shuffle</button>
+          </div>
+
+          <p class="gallery-status" id="gallery-status">Loading gallery…</p>
+          <p class="gallery-interaction-hint">Click any image to view keypoints and bounding boxes. Click again or Close to dismiss.</p>
+
+          <div class="gallery-layout">
+            <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
+
+            <aside class="gallery-detail" id="gallery-detail" hidden>
+              <div class="gallery-detail-header">
+                <div class="gallery-detail-heading">
+                  <h3 id="gallery-detail-title">Select an image</h3>
+                  <p id="gallery-detail-meta"></p>
+                </div>
+                <button id="gallery-detail-close" class="gallery-detail-close" type="button" aria-label="Close detail view">Close</button>
+              </div>
+              <div class="gallery-detail-stage">
+                <img id="gallery-detail-image" alt="" />
+                <canvas id="gallery-overlay" aria-hidden="true"></canvas>
+              </div>
+              <div class="gallery-detail-stats" id="gallery-detail-stats"></div>
+              <p class="gallery-detail-hint">Colored boxes and keypoints show per-instance annotations from Animal World.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="overview">
+        <div class="section-heading">
+          <h2>Overview</h2>
+          <p>
+            From single animals to crowded social groups — intra-species herds, cross-species scenes,
+            age-diverse groups, rare species, and complex social behaviors. Animal World shifts the focus from isolated animal pose localization to scene-centric social pose understanding.
+          </p>
+        </div>
+
+        <figure class="overview-media">
+          <img
+            src="assets/images/dataset_overview_1.png?v=bg2"
+            alt="Overview of Animal World showing single instances, intra-species groups, cross-species interactions, age diversity, rare species, and complex social behaviors"
+            loading="lazy"
+          />
+          <figcaption class="figure-caption">
+            Overview of Animal World. Representative source images with instance-level pose annotations across diverse ecological scenarios.
+          </figcaption>
+        </figure>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Cross-Species Interaction</h3>
+            <p>
+              409 cross-species images covering 94 unique species combinations. Animals with different body sizes,
+              shapes, and textures appear in the same scene, requiring robust instance association under heterogeneous morphology.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Age Diversity</h3>
+            <p>
+              1,918 age-diverse images including juveniles, adults, and mother–offspring pairs.<br />
+              Enables evaluation of age-sensitive pose understanding beyond simple scale or depth changes.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Complex Social Behaviors</h3>
+            <p>
+              Chasing, fighting, grooming, mating, parental care, group movement, and collective foraging — poses shaped
+              by interaction rather than independent motion alone.
+            </p>
+          </article>
+        </div>
+
+        <p class="overview-copy">
+          Animal World was collected from 400+ 1080p animal videos. Frames are sparsely sampled with a large temporal
+          stride to reduce near-duplicates and increase diversity across poses, species, viewpoints, and social
+          configurations. Each visible animal is annotated independently with a unified 30-keypoint taxonomy,
+          together with instance-level segmentation masks and bounding boxes derived from SAM 3D.
+        </p>
+      </section>
+
+      <section class="content-section" id="keypoints">
+        <div class="section-heading">
+          <h2>Keypoint Annotation Protocol</h2>
+          <p>
+            A unified 30-keypoint anatomical taxonomy for quadrupeds and primates, indexed from 0 to 29.
+          </p>
+        </div>
+
+        <div class="keypoint-layout">
+          <figure class="figure-card">
+            <img src="assets/images/keypoint_vis.jpg" alt="Visualization of the 30 animal keypoints on a quadruped" loading="lazy" />
+            <figcaption class="figure-caption">Keypoint visualization on a representative animal instance.</figcaption>
+          </figure>
+
+          <div class="keypoint-table-wrap">
+            <table class="keypoint-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>ID</th>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>0</td><td>Left eye</td><td>15</td><td>Right forelimb wrist</td></tr>
+                <tr><td>1</td><td>Right eye</td><td>16</td><td>Left hind-limb ankle</td></tr>
+                <tr><td>2</td><td>Lower jaw</td><td>17</td><td>Right hind-limb ankle</td></tr>
+                <tr><td>3</td><td>Left forefoot</td><td>18</td><td>Neck midpoint</td></tr>
+                <tr><td>4</td><td>Right forefoot</td><td>19</td><td>Tail tip</td></tr>
+                <tr><td>5</td><td>Left hind foot</td><td>20</td><td>Left ear base</td></tr>
+                <tr><td>6</td><td>Right hind foot</td><td>21</td><td>Right ear base</td></tr>
+                <tr><td>7</td><td>Tail root</td><td>22</td><td>Left mouth corner</td></tr>
+                <tr><td>8</td><td>Left forelimb elbow</td><td>23</td><td>Right mouth corner</td></tr>
+                <tr><td>9</td><td>Right forelimb elbow</td><td>24</td><td>Nose tip</td></tr>
+                <tr><td>10</td><td>Left hind-limb knee</td><td>25</td><td>Tail midpoint</td></tr>
+                <tr><td>11</td><td>Right hind-limb knee</td><td>26</td><td>Anterior back</td></tr>
+                <tr><td>12</td><td>Left upper forelimb</td><td>27</td><td>Middle back</td></tr>
+                <tr><td>13</td><td>Right upper forelimb</td><td>28</td><td>Posterior back</td></tr>
+                <tr><td>14</td><td>Left forelimb wrist</td><td>29</td><td>Abdomen midpoint</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!--
+      <section class="content-section" id="statistics">
+        <div class="section-heading">
+          <h2>Dataset Statistics</h2>
+          <p>
+            50.02% of images contain multiple animals (2–20 instances per image), enabling evaluation under crowded groups and mutual occlusion.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <figure class="figure-card">
+            <div class="stats-figure-media">
+              <img src="assets/images/species_distribution.png?v=bg2" alt="Taxonomic distribution of species and families in Animal World" loading="lazy" />
+            </div>
+            <figcaption class="figure-caption">(a) Taxonomic distribution across diverse animal families.</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <div class="stats-figure-media stats-figure-media--zoom">
+              <img src="assets/images/instance_count_distribution_top20_magma_compact.png?v=bg2" alt="Distribution of annotated instances per image" loading="lazy" />
+            </div>
+            <figcaption class="figure-caption">(b) Instance-count distribution per image.</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <div class="stats-figure-media stats-figure-media--zoom">
+              <img src="assets/images/age_diversity_ratio.png?v=bg2" alt="Distribution of age-diverse images across juvenile species" loading="lazy" />
+            </div>
+            <figcaption class="figure-caption">(c) Age-diverse images across juvenile animal species.</figcaption>
+          </figure>
+        </div>
+      </section>
+      -->
+
+      <section class="content-section" id="benchmark">
+        <div class="section-heading">
+          <h2>Benchmark Results</h2>
+          <p>
+            Representative pose-estimation backbones evaluated on Animal World reveal substantial challenges under cross-species variation, social interaction, and occlusion.
+          </p>
+        </div>
+
+        <div class="benchmark-tables">
+          <div class="comparison-table-wrap">
+            <table class="results-table">
+              <caption>Effect of social-scene supervision on Animal World.</caption>
+              <thead>
+                <tr>
+                  <th rowspan="2">Training Data</th>
+                  <th colspan="2">Single</th>
+                  <th colspan="2">Intra-species Group</th>
+                  <th colspan="2">Cross-species</th>
+                  <th colspan="2">Social</th>
+                  <th colspan="2">Full Eval</th>
+                </tr>
+                <tr>
+                  <th>AP</th>
+                  <th>mAP</th>
+                  <th>AP</th>
+                  <th>mAP</th>
+                  <th>AP</th>
+                  <th>mAP</th>
+                  <th>AP</th>
+                  <th>mAP</th>
+                  <th>AP</th>
+                  <th>mAP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Animal World w/o Social</td>
+                  <td>95.1</td>
+                  <td>64.0</td>
+                  <td>84.6</td>
+                  <td>50.0</td>
+                  <td>89.1</td>
+                  <td>59.2</td>
+                  <td>83.3</td>
+                  <td>48.1</td>
+                  <td>88.1</td>
+                  <td>54.6</td>
+                </tr>
+                <tr>
+                  <td>Animal World Social-only</td>
+                  <td>93.1</td>
+                  <td>54.5</td>
+                  <td>93.2</td>
+                  <td>57.7</td>
+                  <td>89.7</td>
+                  <td>65.1</td>
+                  <td>93.2</td>
+                  <td>59.5</td>
+                  <td>92.9</td>
+                  <td>57.3</td>
+                </tr>
+                <tr class="highlight">
+                  <td><strong>Animal World Full</strong></td>
+                  <td><strong>95.3</strong></td>
+                  <td><strong>70.3</strong></td>
+                  <td><strong>92.5</strong></td>
+                  <td><strong>65.8</strong></td>
+                  <td><strong>91.3</strong></td>
+                  <td><strong>70.7</strong></td>
+                  <td><strong>92.6</strong></td>
+                  <td><strong>66.1</strong></td>
+                  <td><strong>91.1</strong></td>
+                  <td><strong>67.4</strong></td>
+                </tr>
+                <tr>
+                  <td>Gain over w/o Social</td>
+                  <td>+0.2</td>
+                  <td>+6.3</td>
+                  <td>+7.9</td>
+                  <td>+15.8</td>
+                  <td>+2.2</td>
+                  <td>+11.5</td>
+                  <td>+9.3</td>
+                  <td>+18.0</td>
+                  <td>+3.0</td>
+                  <td>+12.8</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="comparison-table-wrap">
+            <table class="results-table">
+              <caption>Effect of age-diverse supervision on juvenile animal pose estimation.</caption>
+              <thead>
+                <tr>
+                  <th rowspan="2">Training Data</th>
+                  <th colspan="2">Juvenile-only</th>
+                  <th colspan="2">Family</th>
+                  <th colspan="2">Age-diverse</th>
+                  <th colspan="2">Full Eval</th>
+                </tr>
+                <tr>
+                  <th>AP</th>
+                  <th>mAP</th>
+                  <th>AP</th>
+                  <th>mAP</th>
+                  <th>AP</th>
+                  <th>mAP</th>
+                  <th>AP</th>
+                  <th>mAP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Animal World w/o Age</td>
+                  <td>91.9</td>
+                  <td>53.5</td>
+                  <td>90.9</td>
+                  <td>50.8</td>
+                  <td>91.1</td>
+                  <td>51.4</td>
+                  <td>93.3</td>
+                  <td>58.0</td>
+                </tr>
+                <tr>
+                  <td>Animal World Age-only</td>
+                  <td>92.7</td>
+                  <td>54.9</td>
+                  <td>93.5</td>
+                  <td>53.7</td>
+                  <td>93.6</td>
+                  <td>53.9</td>
+                  <td>92.3</td>
+                  <td>52.8</td>
+                </tr>
+                <tr class="highlight">
+                  <td><strong>Animal World Full</strong></td>
+                  <td><strong>98.0</strong></td>
+                  <td><strong>64.8</strong></td>
+                  <td><strong>94.1</strong></td>
+                  <td><strong>66.8</strong></td>
+                  <td><strong>94.3</strong></td>
+                  <td><strong>65.9</strong></td>
+                  <td><strong>91.1</strong></td>
+                  <td><strong>67.4</strong></td>
+                </tr>
+                <tr>
+                  <td>Gain over w/o Age</td>
+                  <td>+6.1</td>
+                  <td>+11.3</td>
+                  <td>+3.2</td>
+                  <td>+16.0</td>
+                  <td>+3.2</td>
+                  <td>+14.5</td>
+                  <td>-2.2</td>
+                  <td>+9.4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="comparison-table-wrap">
+            <table class="results-table">
+              <caption>Downstream fitting evaluation on age-diverse animals.</caption>
+              <thead>
+                <tr>
+                  <th rowspan="2">Keypoint Source</th>
+                  <th colspan="3">Juvenile-only</th>
+                  <th colspan="3">Family</th>
+                </tr>
+                <tr>
+                  <th>Reproj. Err.</th>
+                  <th>Mask IoU</th>
+                  <th>Failure</th>
+                  <th>Reproj. Err.</th>
+                  <th>Mask IoU</th>
+                  <th>Failure</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Animal World w/o Age</td>
+                  <td>4.6</td>
+                  <td>88.0</td>
+                  <td>3.6%</td>
+                  <td>6.8</td>
+                  <td>87.7</td>
+                  <td>15.4%</td>
+                </tr>
+                <tr>
+                  <td>Animal World Age-only</td>
+                  <td>5.1</td>
+                  <td>88.0</td>
+                  <td>1.2%</td>
+                  <td>6.9</td>
+                  <td>87.7</td>
+                  <td>15.7%</td>
+                </tr>
+                <tr class="highlight">
+                  <td><strong>Animal World Full</strong></td>
+                  <td><strong>4.7</strong></td>
+                  <td><strong>88.1</strong></td>
+                  <td><strong>0.0%</strong></td>
+                  <td><strong>6.6</strong></td>
+                  <td><strong>87.8</strong></td>
+                  <td><strong>12.6%</strong></td>
+                </tr>
+                <tr>
+                  <td>Δ Full − w/o Age</td>
+                  <td>+0.1</td>
+                  <td>+0.1</td>
+                  <td>-3.6</td>
+                  <td>-0.2</td>
+                  <td>+0.1</td>
+                  <td>-2.8</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="comparison">
+        <div class="section-heading">
+          <h2>Comparison with Existing Datasets</h2>
+          <p>
+            Animal World provides denser keypoints, broader multi-animal coverage, explicit cross-species co-occurrence, social behavior cases, and age-diverse scenes.
+          </p>
+        </div>
+
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Dataset</th>
+                <th>Images</th>
+                <th>Instances</th>
+                <th>Species</th>
+                <th>KPs</th>
+                <th>Intra</th>
+                <th>Mixed</th>
+                <th>Social</th>
+                <th>Rare</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Animal Pose</td><td>4,666</td><td>6,117</td><td>5</td><td>20</td><td>✓</td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>StanfordExtra</td><td>20,580</td><td>12,000</td><td>1</td><td>20</td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>AP-10K</td><td>10,015</td><td>13,028</td><td>54</td><td>17</td><td>✓</td><td></td><td></td><td>✓</td><td></td></tr>
+              <tr><td>Animal Kingdom</td><td>33,099</td><td>33,099</td><td>850</td><td>20</td><td></td><td></td><td></td><td>✓</td><td></td></tr>
+              <tr><td>APT-36K</td><td>36,000</td><td>53,006</td><td>30</td><td>17</td><td>✓</td><td></td><td></td><td>✓</td><td></td></tr>
+              <tr><td>Animal3D</td><td>3,400</td><td>3,400</td><td>40</td><td>26</td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr class="highlight"><td><strong>Animal World (ours)</strong></td><td><strong>10,036</strong></td><td><strong>19,129</strong></td><td><strong>124</strong></td><td><strong>30</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="content-section citation-section" id="citation">
+        <div class="section-heading">
+          <h2>Citation</h2>
+        </div>
+
+        <div class="citation-code-wrap">
+          <button class="citation-copy-button" type="button" data-copy-target="citation-bibtex">Copy</button>
+          <pre class="citation-bibtex" id="citation-bibtex">@inproceedings{animalworld2026,
+  title     = {Animal World: A Cross-Species Dataset for Social Animal Pose Understanding},
+  author    = {Hu, Xuyi and Lyu, Jin and Zhang, Shaojie and Ma, Ke and Wang, Houtianfu and Liu, Siwei and Liu, Jiuming and Zuffi, Silvia and Zhao, Jiachen and An, Liang and Goetz, Stefan},
+  year      = {2026}
+}</pre>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <p>Animal World · Cross-Species Social Animal Pose Understanding</p>
+        <p class="site-footer-attribution">
+          This webpage template is adapted from
+          <a href="https://articraft3d.github.io/" target="_blank" rel="noopener noreferrer">Articraft</a>,
+          under a
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+          License.
+        </p>
+      </footer>
+    </div>
+
+    <script src="assets/js/gallery.js?v=13"></script>
+    <script>
+      const nav = document.querySelector('.site-nav');
+      const toggle = document.querySelector('.mobile-nav-toggle');
+      const menu = document.getElementById('project-sections-menu');
+
+      if (toggle && nav && menu) {
+        toggle.addEventListener('click', () => {
+          const open = !nav.classList.contains('nav-open');
+          nav.classList.toggle('nav-open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        });
+
+        menu.addEventListener('click', (event) => {
+          if (event.target.closest('a')) nav.classList.remove('nav-open');
+        });
+      }
+
+      const copyButton = document.querySelector('.citation-copy-button');
+      if (copyButton) {
+        copyButton.addEventListener('click', async () => {
+          const target = document.getElementById(copyButton.dataset.copyTarget);
+          if (!target) return;
+          try {
+            await navigator.clipboard.writeText(target.textContent.trim());
+            const original = copyButton.textContent;
+            copyButton.textContent = 'Copied';
+            setTimeout(() => { copyButton.textContent = original; }, 1400);
+          } catch (error) {
+            copyButton.textContent = 'Failed';
+            setTimeout(() => { copyButton.textContent = 'Copy'; }, 1400);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
